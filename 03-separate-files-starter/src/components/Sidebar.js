@@ -1,22 +1,25 @@
-import React from "react"
+import React, { useContext } from "react";
+import OurContext from "../OurContext";
 
-function Sidebar({ color, size, setColor, setSize }) {
+function Sidebar(props) {
+  const state = useContext(OurContext);
+
   return (
     <div className="sidebar">
       <input
         type="text"
-        value={size}
-        onChange={(e) => setSize(e.target.value)}
+        value={state.size}
+        onChange={(e) => state.setSize(e.target.value)}
       />
       <input
         type="text"
-        value={color}
-        onChange={(e) => setColor(e.target.value)}
+        value={state.color}
+        onChange={(e) => state.setColor(e.target.value)}
       />
       <button
         onClick={() => {
-          setColor("pink");
-          setSize(20);
+          state.setColor("pink");
+          state.setSize(20);
         }}
       >
         Make the text 20px and pink
@@ -25,4 +28,4 @@ function Sidebar({ color, size, setColor, setSize }) {
   );
 }
 
-export default Sidebar
+export default Sidebar;
